@@ -1,4 +1,4 @@
-package ru.netology.nmedia.data
+package ru.netology.nmedia.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -14,6 +14,7 @@ class PostRepositoryInMemoryImpl: PostRepository  {
             published = "20 мая в 18:36",
             likedByMe = false,
             liked = 0,
+            sharedByMe = false,
             shared = 0,
             viewed = 1
         ),
@@ -24,6 +25,7 @@ class PostRepositoryInMemoryImpl: PostRepository  {
             published = "21 мая в 18:36",
             likedByMe = false,
             liked = 0,
+            sharedByMe = false,
             shared = 0,
             viewed = 1
         )
@@ -35,15 +37,26 @@ class PostRepositoryInMemoryImpl: PostRepository  {
 
     override fun likeById(id: Long) {
         posts = posts.map {
-            it.let { if (it.id != id) it else it.copy(likedByMe = !it.likedByMe) }
-//              .let { if (!it.likedByMe) it.copy(liked = it.liked + 1) else it.copy(liked = it.liked - 1) }
+            it.let { if (it.id == id) {
+                    it.copy(
+                        likedByMe = !it.likedByMe,
+                        liked = if (!it.likedByMe) it.liked + 1 else it.liked - 1
+                    )
+                } else it
             }
-        data.value = posts
         }
+        data.value = posts
+    }
 
     override fun shareById(id: Long) {
         posts = posts.map {
-            if (it.id != id) it else it.copy(shared = it.shared + 1)
+            it.let { if (it.id == id) {
+                    it.copy(
+                        sharedByMe = !it.sharedByMe,
+                        shared = if (!it.sharedByMe) it.shared + 1 else it.shared - 1
+                    )
+                } else it
+            }
         }
         data.value = posts
     }
