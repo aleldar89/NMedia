@@ -1,4 +1,4 @@
-package ru.netology.nmedia.data
+package ru.netology.nmedia.post
 
 fun countToString(count: Int): String {
     return when (count) {
