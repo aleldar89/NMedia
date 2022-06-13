@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">NMedia</string>
     <string name="hello">NMedia!</string>
+    <string name="remove">Remove</string>
+    <string name="text_hint">Your text</string>
+    <string name="error_empty_content">Content can\'t be empty</string>
+    <string name="edit">Edit</string>
+    <string name="edited_message">Edit Message</string>
 </resources>

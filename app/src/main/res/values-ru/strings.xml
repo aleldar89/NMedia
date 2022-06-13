@@ -2,4 +2,9 @@
 <resources>
     <string name="app_name">НМедиа</string>
     <string name="hello">НМедиа!</string>
+    <string name="remove">Удалить</string>
+    <string name="text_hint">Ваш текст</string>
+    <string name="error_empty_content">Пустой пост</string>
+    <string name="edit">Редактировать</string>
+    <string name="edited_message">Редактирование</string>
 </resources>
