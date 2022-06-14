@@ -34,6 +34,8 @@ class MainActivity : AppCompatActivity() {
                         //при выборе "редактировать" всплывает плашка редактирования
                         editGroup.visibility = View.VISIBLE
                         editedMessage.text = post.content
+
+                        //передает пост в edited
                         viewModel.edit(post)
                     }
                 }
@@ -55,6 +57,7 @@ class MainActivity : AppCompatActivity() {
                     return@setOnClickListener
                 }
 
+                //отправляет введенный текст в редактируемый пост или формирует новый пост
                 viewModel.changeContent(text.toString().trim())
                 viewModel.save()
 
@@ -75,15 +78,16 @@ class MainActivity : AppCompatActivity() {
             }
 
             with(binding.content) {
-                /* при нажатии на "отмену" исчезает
-                плашка редактирования, вводимый текст, убирается клавиатура */
+                /* при нажатии на "отмену" исчезает плашка редактирования, вводимый текст,
+                убирается клавиатура, вычищается контейнер edited в PostViewModel*/
                 binding.cancelEdit.setOnClickListener {
                     binding.editGroup.visibility = View.GONE
                     binding.content.text.clear()
+                    viewModel.clearEditedData()
                     AndroidUtils.hideKeyboard(this)
                 }
-
                 requestFocus()
+                //заполняет вводимый текст содержимым поста
                 setText(post.content)
             }
         }
