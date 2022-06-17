@@ -20,6 +20,8 @@ class PostViewHolder (
             content.text = post.content
 
             menu.setOnClickListener {
+                //TODO привязать состояние кнопки меню к PopupMenu
+
                 PopupMenu(it.context, it).apply {
                     inflate(R.menu.post_menu)
                     setOnMenuItemClickListener { item ->
@@ -38,24 +40,19 @@ class PostViewHolder (
                 }.show()
             }
 
-            like.setImageResource(
-                if (post.likedByMe) R.drawable.ic_liked_24 else R.drawable.ic_like_24
-            )
-
             like.setOnClickListener {
                 onInteractionListener.onLike(post)
             }
+            like.isChecked = post.likedByMe
+            like.text = countToString(post.liked)
 
-            share.setImageResource(
-                if (post.sharedByMe) R.drawable.ic_shared_24 else R.drawable.ic_share_24
-            )
 
             share.setOnClickListener {
                 onInteractionListener.onShare(post)
             }
+            share.isChecked = post.sharedByMe
+            share.text = countToString(post.shared)
 
-            likeCounter.text = countToString(post.liked)
-            shareCounter.text = countToString(post.shared)
             viewed.text = countToString(post.viewed)
         }
     }
