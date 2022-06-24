@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list"
@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/common_spacing"
-        app:layout_constraintBottom_toTopOf="@id/content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_edit_24"
         android:background="@android:color/white" />
@@ -71,35 +71,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/common_spacing"
-        app:layout_constraintBottom_toTopOf="@id/content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_cancel_24"
         android:background="@android:color/white"/>
 
-    <EditText
-        android:id="@+id/content"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:hint="@string/text_hint"
-        android:importantForAutofill="no"
-        android:inputType="textMultiLine"
-        android:maxLines="4"
-        android:padding="@dimen/common_spacing"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/save"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageButton
-        android:id="@+id/save"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/button_ok"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/common_spacing"
-        android:padding="@dimen/common_spacing"
+        android:layout_margin="@dimen/common_spacing"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/content"
-        app:srcCompat="@drawable/ic_save_24"
-        android:background="@android:color/white"/>
+        app:srcCompat="@drawable/ic_add_24dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

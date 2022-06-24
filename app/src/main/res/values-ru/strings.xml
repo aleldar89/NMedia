@@ -7,4 +7,5 @@
     <string name="error_empty_content">Пустой пост</string>
     <string name="edit">Редактировать</string>
     <string name="edited_message">Редактирование</string>
+    <string name="blank_message_error">Добавьте текст</string>
 </resources>

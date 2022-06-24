@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".activity.NewPostActivity">
+
+    <EditText
+        android:id="@+id/edited_text"
+        android:layout_marginBottom="?actionBarSize"
+        android:background="@android:color/transparent"
+        android:inputType="textMultiLine"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:padding="@dimen/common_spacing"/>
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/app_bar"
+        android:layout_gravity="bottom"
+        style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:fabAlignmentMode="end"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/button_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@id/app_bar"
+        app:srcCompat="@drawable/ic_edit_post_24dp" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

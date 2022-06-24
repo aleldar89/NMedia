@@ -6,4 +6,5 @@
     <string name="error_empty_content">Content can\'t be empty</string>
     <string name="edit">Edit</string>
     <string name="edited_message">Edit Message</string>
+    <string name="blank_message_error">Text is blank</string>
 </resources>
