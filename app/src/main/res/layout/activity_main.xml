@@ -12,69 +12,8 @@
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/barrier"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/card_post" />
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="top"
-        app:constraint_referenced_ids="edit_image" />
-
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/edit_group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:constraint_referenced_ids="edit_image,edit_message,edited_message,cancel_edit" />
-
-    <ImageView
-        android:id="@+id/edit_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/common_spacing"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_edit_24"
-        android:background="@android:color/white" />
-
-    <TextView
-        android:id="@+id/edit_message"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/edited_message"
-        android:textColor="@color/netology_blue"
-        android:textSize="@dimen/edit_font_size"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/edit_image"
-        app:layout_constraintTop_toTopOf="@id/edit_image"
-        app:layout_constraintBottom_toTopOf="@id/edited_message"
-        app:layout_constraintEnd_toStartOf="@id/cancel_edit"
-        android:background="@android:color/white"/>
-
-    <TextView
-        android:id="@+id/edited_message"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:maxLines="1"
-        android:text="@string/edited_message"
-        android:textSize="@dimen/edit_font_size"
-        app:layout_constraintStart_toEndOf="@id/edit_image"
-        app:layout_constraintTop_toBottomOf="@id/edit_message"
-        app:layout_constraintBottom_toBottomOf="@id/edit_image"
-        app:layout_constraintEnd_toStartOf="@id/cancel_edit"
-        android:background="@android:color/white"/>
-
-    <ImageButton
-        android:id="@+id/cancel_edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/common_spacing"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_cancel_24"
-        android:background="@android:color/white"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/button_ok"

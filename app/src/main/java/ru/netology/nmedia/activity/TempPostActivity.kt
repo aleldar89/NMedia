@@ -4,29 +4,29 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
 import android.widget.Toast
 import androidx.activity.viewModels
-import com.google.android.material.snackbar.Snackbar
 import ru.netology.nmedia.R
-import ru.netology.nmedia.databinding.EditPostBinding
+import ru.netology.nmedia.databinding.TempPostBinding
 import ru.netology.nmedia.viewmodel.PostViewModel
 
-class EditPostActivity : AppCompatActivity() {
+class TempPostActivity : AppCompatActivity() {
+
+    private val viewModel: PostViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = EditPostBinding.inflate(layoutInflater)
+        val binding = TempPostBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val postContent = intent.extras?.getString("content")
-
         with(binding) {
-            editedText.setText(postContent)
 
-            buttonEdit.setOnClickListener {
-                if (editedText.text.isNullOrBlank()) {
+            tempText.setText(intent.extras?.getString(Intent.EXTRA_TEXT))
+
+            buttonOk.setOnClickListener {
+                if (tempText.text.isNullOrBlank()) {
                     Toast.makeText(
-                        this@EditPostActivity,
+                        this@TempPostActivity,
                         getString(R.string.error_empty_content),
                         Toast.LENGTH_SHORT
                     ).show()
@@ -35,11 +35,16 @@ class EditPostActivity : AppCompatActivity() {
                 } else {
                     setResult(
                         Activity.RESULT_OK,
-                        Intent().putExtra(Intent.EXTRA_TEXT, editedText.text.toString())
+                        Intent().putExtra(Intent.EXTRA_TEXT, tempText.text.toString())
                     )
                 }
                 finish()
             }
+        }
+
+        binding.cancelEdit.setOnClickListener {
+            viewModel.clearEditedData()
+            finish()
         }
 
     }

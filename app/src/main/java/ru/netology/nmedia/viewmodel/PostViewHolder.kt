@@ -21,6 +21,7 @@ class PostViewHolder (
 
             menu.setOnClickListener {
                 //TODO привязать состояние кнопки меню к PopupMenu
+                menu.isChecked = true
 
                 PopupMenu(it.context, it).apply {
                     inflate(R.menu.post_menu)
@@ -37,7 +38,21 @@ class PostViewHolder (
                             else -> false
                         }
                     }
+
+                    setOnDismissListener {
+                        binding.menu.isChecked = false
+                    }
+
                 }.show()
+            }
+
+            if (post.video != null) {
+                imageView.visibility = View.VISIBLE
+                play.visibility = View.VISIBLE
+            }
+
+            play.setOnClickListener {
+                onInteractionListener.onPlay(post)
             }
 
             like.setOnClickListener {
