@@ -11,7 +11,7 @@ class PostRepositoryInMemoryImpl: PostRepository  {
         Post(
             id = nextId++,
             author = "Нетология. Университет интернет-профессий прошлого",
-            content = "Глядите, что нашел!",
+            content = "Пост с вложенным видео",
             published = "20 мая в 18:36",
             likedByMe = false,
             liked = 0,

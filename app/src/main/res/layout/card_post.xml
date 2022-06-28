@@ -27,7 +27,7 @@
         app:iconPadding="0dp"
         app:icon="@drawable/ic_menu_24dp"
         style="@style/Widget.AppTheme.MenuButton"
-        android:backgroundTint="@color/white" />
+        android:backgroundTint="@android:color/transparent" />
 
     <TextView
         android:id="@+id/author"
@@ -76,7 +76,7 @@
         android:layout_marginTop="@dimen/common_spacing" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/videoView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -87,15 +87,16 @@
         android:src="@drawable/youtube_logo"
         android:visibility="gone"/>
 
-    <Button
+    <ImageButton
         android:id="@+id/play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/imageView"
-        app:layout_constraintEnd_toEndOf="@id/imageView"
-        app:layout_constraintTop_toTopOf="@id/imageView"
-        app:layout_constraintBottom_toBottomOf="@id/imageView"
-        app:icon="@drawable/ic_play_24"
+        app:layout_constraintStart_toStartOf="@id/videoView"
+        app:layout_constraintEnd_toEndOf="@id/videoView"
+        app:layout_constraintTop_toTopOf="@id/videoView"
+        app:layout_constraintBottom_toBottomOf="@id/videoView"
+        app:srcCompat="@drawable/ic_play_48"
+        android:backgroundTint="@android:color/transparent"
         android:visibility="gone" />
 
     <androidx.constraintlayout.widget.Barrier
@@ -103,7 +104,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="imageView" />
+        app:constraint_referenced_ids="videoView" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/like"

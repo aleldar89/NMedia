@@ -20,7 +20,6 @@ class PostViewHolder (
             content.text = post.content
 
             menu.setOnClickListener {
-                //TODO привязать состояние кнопки меню к PopupMenu
                 menu.isChecked = true
 
                 PopupMenu(it.context, it).apply {
@@ -47,11 +46,15 @@ class PostViewHolder (
             }
 
             if (post.video != null) {
-                imageView.visibility = View.VISIBLE
+                videoView.visibility = View.VISIBLE
                 play.visibility = View.VISIBLE
             }
 
             play.setOnClickListener {
+                onInteractionListener.onPlay(post)
+            }
+
+            videoView.setOnClickListener {
                 onInteractionListener.onPlay(post)
             }
 
