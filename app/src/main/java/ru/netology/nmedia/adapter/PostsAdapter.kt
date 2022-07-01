@@ -4,7 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import ru.netology.nmedia.databinding.CardPostBinding
-import ru.netology.nmedia.post.Post
+import ru.netology.nmedia.dto.Post
+import ru.netology.nmedia.util.PostDiffCallback
 
 interface OnInteractionListener {
     fun onLike(post: Post) {}
