@@ -7,11 +7,13 @@ import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.CardPostBinding
 import ru.netology.nmedia.post.Post
 import ru.netology.nmedia.post.countToString
+import java.security.acl.Group
 
 class PostViewHolder (
     private val binding: CardPostBinding,
     private val onInteractionListener: OnInteractionListener
 ) : RecyclerView.ViewHolder(binding.root) {
+
     fun bind(post: Post) {
         binding.apply {
             avatar.setImageResource(R.drawable.ic_netology_48)
@@ -45,10 +47,10 @@ class PostViewHolder (
                 }.show()
             }
 
-            if (post.video != null) {
-                videoView.visibility = View.VISIBLE
-                play.visibility = View.VISIBLE
-            }
+            if (post.video != null)
+                videoGroup.visibility = View.VISIBLE
+            else
+                videoGroup.visibility = View.GONE
 
             play.setOnClickListener {
                 onInteractionListener.onPlay(post)

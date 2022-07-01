@@ -75,6 +75,12 @@
         app:layout_constraintTop_toBottomOf="@id/creator_barrier"
         android:layout_marginTop="@dimen/common_spacing" />
 
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/videoGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="videoView,play" />
+
     <ImageView
         android:id="@+id/videoView"
         android:layout_width="wrap_content"
@@ -84,8 +90,7 @@
         app:layout_constraintTop_toBottomOf="@id/content"
         android:paddingTop="@dimen/common_spacing"
         android:adjustViewBounds="true"
-        android:src="@drawable/youtube_logo"
-        android:visibility="gone"/>
+        android:src="@drawable/youtube_logo" />
 
     <ImageButton
         android:id="@+id/play"
@@ -96,8 +101,7 @@
         app:layout_constraintTop_toTopOf="@id/videoView"
         app:layout_constraintBottom_toBottomOf="@id/videoView"
         app:srcCompat="@drawable/ic_play_48"
-        android:backgroundTint="@android:color/transparent"
-        android:visibility="gone" />
+        android:backgroundTint="@android:color/transparent" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/content_barrier"

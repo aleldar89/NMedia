@@ -31,14 +31,12 @@
         app:layout_anchor="@id/app_bar"
         app:srcCompat="@drawable/ic_edit_post_24dp" />
 
-    <ImageButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/cancel_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="@dimen/common_spacing"
-        app:srcCompat="@drawable/ic_cancel_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@android:color/transparent"/>
+        android:layout_margin="16dp"
+        app:layout_anchor="@id/app_bar"
+        app:srcCompat="@drawable/ic_cancel_24"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
