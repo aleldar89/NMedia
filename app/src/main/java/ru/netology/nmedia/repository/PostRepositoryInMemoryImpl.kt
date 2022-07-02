@@ -1,41 +1,48 @@
 package ru.netology.nmedia.repository
 
-import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import ru.netology.nmedia.dto.Post
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 
-class PostRepositoryInMemoryImpl(
-    private val context: Context
-) : PostRepository  {
-    private val postFileName = "posts.json"
-    private val gson = Gson()
-    private val type = TypeToken.getParameterized(List::class.java, Post::class.java).type
+class PostRepositoryInMemoryImpl: PostRepository  {
+    private var nextId = 1L
+    private var posts = listOf(
 
-    private var posts = readAll()
-        set(value) {
-            field = value
-            sync()
-        }
-
-    private fun sync() {
-        context.openFileOutput(postFileName, Context.MODE_PRIVATE).bufferedWriter().use {
-            it.write(gson.toJson(posts, type))
-        }
-    }
-
-    private fun readAll(): List<Post> {
-        val file = context.filesDir.resolve(postFileName)
-        return if (file.exists()) {
-            context.openFileInput(postFileName).bufferedReader().use {
-                gson.fromJson(it, type)
-            }
-        } else {
-            emptyList()
-        }
-    }
+        Post(
+            id = nextId++,
+            author = "Нетология. Университет интернет-профессий прошлого",
+            content = "Пост с вложенным видео",
+            published = "20 мая в 18:36",
+            likedByMe = false,
+            liked = 0,
+            sharedByMe = false,
+            shared = 0,
+            viewed = 1,
+            video = "https://www.youtube.com/watch?v=WhWc3b3KhnY"
+        ),
+        Post(
+            id = nextId++,
+            author = "Нетология. Университет интернет-профессий прошлого",
+            content = "Привет, это старая Нетология! Когда-то Нетология начиналась с интенсивов по онлайн-маркетингу. Затем появились курсы по дизайну, разработке, аналитике и управлению. Мы растём сами и помогаем расти студентам: от новичков до уверенных профессионалов. Но самое важное остаётся с нами: мы верим, что в каждом уже есть сила, которая заставляет хотеть больше, целиться выше, бежать быстрее. Наша миссия — помочь встать на путь роста и начать цепочку перемен → http://netolo.gy/fyb",
+            published = "20 мая в 18:36",
+            likedByMe = false,
+            liked = 0,
+            sharedByMe = false,
+            shared = 0,
+            viewed = 1
+        ),
+        Post(
+            id = nextId++,
+            author = "Нетология. Университет интернет-профессий будущего",
+            content = "Привет, это новая Нетология! Когда-то Нетология начиналась с интенсивов по онлайн-маркетингу. Затем появились курсы по дизайну, разработке, аналитике и управлению. Мы растём сами и помогаем расти студентам: от новичков до уверенных профессионалов. Но самое важное остаётся с нами: мы верим, что в каждом уже есть сила, которая заставляет хотеть больше, целиться выше, бежать быстрее. Наша миссия — помочь встать на путь роста и начать цепочку перемен → http://netolo.gy/fyb",
+            published = "21 мая в 18:36",
+            likedByMe = false,
+            liked = 0,
+            sharedByMe = false,
+            shared = 0,
+            viewed = 1
+        )
+    )
 
     private val data = MutableLiveData(posts)
 
@@ -43,7 +50,7 @@ class PostRepositoryInMemoryImpl(
 
     override fun likeById(id: Long) {
         posts = posts.map {
-             if (it.id == id) {
+            if (it.id == id) {
                 it.copy(
                     likedByMe = !it.likedByMe,
                     liked = if (!it.likedByMe) it.liked + 1 else it.liked - 1
@@ -51,7 +58,6 @@ class PostRepositoryInMemoryImpl(
             } else it
         }
         data.value = posts
-        sync()
     }
 
     override fun shareById(id: Long) {
@@ -64,7 +70,6 @@ class PostRepositoryInMemoryImpl(
             } else it
         }
         data.value = posts
-        sync()
     }
 
     override fun removeById(id: Long) {
@@ -76,7 +81,7 @@ class PostRepositoryInMemoryImpl(
         if (post.id == 0L) {
             posts = listOf(
                 post.copy(
-                    id = posts.firstOrNull()?.id?.plus(1) ?: 1L,
+                    id = nextId++,
                     author = "Me",
                     content = post.content,
                     published = "Now",
