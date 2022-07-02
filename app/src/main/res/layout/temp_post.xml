@@ -37,6 +37,6 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         app:layout_anchor="@id/app_bar"
-        app:srcCompat="@drawable/ic_cancel_24"/>
+        app:srcCompat="@drawable/ic_cancel_24" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

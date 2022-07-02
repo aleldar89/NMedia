@@ -7,7 +7,7 @@ import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.CardPostBinding
 import ru.netology.nmedia.post.Post
 import ru.netology.nmedia.post.countToString
-import java.security.acl.Group
+
 
 class PostViewHolder (
     private val binding: CardPostBinding,
