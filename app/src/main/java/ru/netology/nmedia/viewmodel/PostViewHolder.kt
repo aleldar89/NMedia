@@ -8,10 +8,12 @@ import ru.netology.nmedia.databinding.CardPostBinding
 import ru.netology.nmedia.post.Post
 import ru.netology.nmedia.post.countToString
 
+
 class PostViewHolder (
     private val binding: CardPostBinding,
     private val onInteractionListener: OnInteractionListener
 ) : RecyclerView.ViewHolder(binding.root) {
+
     fun bind(post: Post) {
         binding.apply {
             avatar.setImageResource(R.drawable.ic_netology_48)
@@ -20,7 +22,7 @@ class PostViewHolder (
             content.text = post.content
 
             menu.setOnClickListener {
-                //TODO привязать состояние кнопки меню к PopupMenu
+                menu.isChecked = true
 
                 PopupMenu(it.context, it).apply {
                     inflate(R.menu.post_menu)
@@ -37,7 +39,25 @@ class PostViewHolder (
                             else -> false
                         }
                     }
+
+                    setOnDismissListener {
+                        binding.menu.isChecked = false
+                    }
+
                 }.show()
+            }
+
+            if (post.video != null)
+                videoGroup.visibility = View.VISIBLE
+            else
+                videoGroup.visibility = View.GONE
+
+            play.setOnClickListener {
+                onInteractionListener.onPlay(post)
+            }
+
+            videoView.setOnClickListener {
+                onInteractionListener.onPlay(post)
             }
 
             like.setOnClickListener {
