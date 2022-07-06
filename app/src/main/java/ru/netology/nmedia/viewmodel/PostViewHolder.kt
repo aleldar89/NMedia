@@ -7,6 +7,7 @@ import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.CardPostBinding
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.dto.countToString
+import ru.netology.nmedia.util.setAllOnClickListener
 
 
 class PostViewHolder (
@@ -52,13 +53,17 @@ class PostViewHolder (
             else
                 videoGroup.visibility = View.GONE
 
-            play.setOnClickListener {
+            videoGroup.setAllOnClickListener(View.OnClickListener {
                 onInteractionListener.onPlay(post)
-            }
+            })
 
-            videoView.setOnClickListener {
-                onInteractionListener.onPlay(post)
-            }
+//            play.setOnClickListener {
+//                onInteractionListener.onPlay(post)
+//            }
+//
+//            videoView.setOnClickListener {
+//                onInteractionListener.onPlay(post)
+//            }
 
             like.setOnClickListener {
                 onInteractionListener.onLike(post)
