@@ -28,6 +28,12 @@ class AppActivity : AppCompatActivity(R.layout.activity_app) {
                     textArg = text
                 }
             )
+            findNavController(R.id.nav_host_fragment).navigate(
+                R.id.action_feedFragment_to_choosedPostFragment,
+                Bundle().apply {
+                    textArg = text
+                }
+            )
         }
     }
 }

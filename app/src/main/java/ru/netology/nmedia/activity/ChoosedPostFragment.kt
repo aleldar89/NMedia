@@ -11,10 +11,13 @@ import androidx.fragment.app.viewModels
 import com.google.gson.Gson
 import ru.netology.nmedia.R
 import ru.netology.nmedia.activity.NewPostFragment.Companion.textArg
+import ru.netology.nmedia.databinding.CardPostBinding
 import ru.netology.nmedia.databinding.FragmentCardPostBinding
+import ru.netology.nmedia.databinding.FragmentNewPostBinding
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.util.StringArg
 import ru.netology.nmedia.viewmodel.OnInteractionListener
+import ru.netology.nmedia.viewmodel.PostViewHolder
 import ru.netology.nmedia.viewmodel.PostViewModel
 import ru.netology.nmedia.viewmodel.PostsAdapter
 
@@ -74,7 +77,7 @@ class ChoosedPostFragment : Fragment() {
         )
 
 //        binding.list.adapter = adapter
-//
+
 //        viewModel.data.observe(viewLifecycleOwner) { posts ->
 //            adapter.submitList(posts)
 //        }

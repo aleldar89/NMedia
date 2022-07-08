@@ -78,8 +78,7 @@ class FeedFragment : Fragment() {
 
                 override fun onChoose(post: Post) {
                     findNavController().navigate(
-                        //переход, пока не соображу, как выходить на фрагмент поста
-                        R.id.action_feedFragment_to_newPostFragment,
+                        R.id.action_feedFragment_to_choosedPostFragment,
                         Bundle().apply {
                             textArg = gson.toJson(post)
                         }
