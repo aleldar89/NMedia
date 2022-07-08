@@ -57,13 +57,10 @@ class PostViewHolder (
                 onInteractionListener.onPlay(post)
             })
 
-//            play.setOnClickListener {
-//                onInteractionListener.onPlay(post)
-//            }
-//
-//            videoView.setOnClickListener {
-//                onInteractionListener.onPlay(post)
-//            }
+            //при клике на content поста запускается фрагмент c этим постом
+            content.setOnClickListener {
+                onInteractionListener.onChoose(post)
+            }
 
             like.setOnClickListener {
                 onInteractionListener.onLike(post)
@@ -79,6 +76,7 @@ class PostViewHolder (
             share.text = countToString(post.shared)
 
             viewed.text = countToString(post.viewed)
+
         }
     }
 }

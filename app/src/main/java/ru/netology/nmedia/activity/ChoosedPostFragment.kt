@@ -2,29 +2,45 @@ package ru.netology.nmedia.activity
 
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.viewModels
-import ru.netology.nmedia.databinding.ActivityMainBinding
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import com.google.gson.Gson
+import ru.netology.nmedia.R
+import ru.netology.nmedia.activity.NewPostFragment.Companion.textArg
+import ru.netology.nmedia.databinding.FragmentCardPostBinding
 import ru.netology.nmedia.dto.Post
+import ru.netology.nmedia.util.StringArg
 import ru.netology.nmedia.viewmodel.OnInteractionListener
 import ru.netology.nmedia.viewmodel.PostViewModel
 import ru.netology.nmedia.viewmodel.PostsAdapter
 
-class MainActivity : AppCompatActivity() {
+class ChoosedPostFragment : Fragment() {
 
-    private val viewModel: PostViewModel by viewModels()
-
-    private val tempPostLauncher = registerForActivityResult(TempPostResultContract()) {
-        val result = it ?: return@registerForActivityResult
-        viewModel.changeContent(result)
-        viewModel.save()
+    companion object {
+        var Bundle.textArg: String? by StringArg
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    private val viewModel: PostViewModel by viewModels(
+        ownerProducer = ::requireParentFragment
+    )
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        val binding = FragmentCardPostBinding.inflate(
+            inflater,
+            container,
+            false
+        )
+
+        val gson = Gson()
+        val post = arguments?.textArg.let { gson.fromJson(it, Post::class.java) }
 
         val adapter = PostsAdapter(
             object : OnInteractionListener {
@@ -44,7 +60,6 @@ class MainActivity : AppCompatActivity() {
 
                 override fun onEdit(post: Post) {
                     viewModel.edit(post)
-                    tempPostLauncher.launch(post.content)
                 }
 
                 override fun onRemove(post: Post) {
@@ -58,15 +73,13 @@ class MainActivity : AppCompatActivity() {
             }
         )
 
-        binding.list.adapter = adapter
+//        binding.list.adapter = adapter
+//
+//        viewModel.data.observe(viewLifecycleOwner) { posts ->
+//            adapter.submitList(posts)
+//        }
 
-        viewModel.data.observe(this) { posts ->
-            adapter.submitList(posts)
-        }
-
-        binding.buttonOk.setOnClickListener {
-            tempPostLauncher.launch(null)
-        }
-
+        return binding.root
     }
+
 }
