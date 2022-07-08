@@ -36,10 +36,6 @@ class NewPostFragment : Fragment() {
         arguments?.textArg
             ?.let(binding.edit::setText)
 
-//        binding.edit.setText(arguments?.getString("content"))
-
-//        binding.edit.setText(arguments?.get("content").toString())
-
         binding.edit.requestFocus()
 
 
@@ -57,39 +53,4 @@ class NewPostFragment : Fragment() {
 
         return binding.root
     }
-
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        val binding = FragmentNewPostBinding.inflate(layoutInflater)
-//        setContentView(binding.root)
-//
-//        with(binding) {
-//
-//            edit.setText(intent.extras?.getString(Intent.EXTRA_TEXT))
-//
-//            ok.setOnClickListener {
-//                if (tempText.text.isNullOrBlank()) {
-//                    Toast.makeText(
-//                        this@NewPostFragment,
-//                        getString(R.string.error_empty_content),
-//                        Toast.LENGTH_SHORT
-//                    ).show()
-//                    setResult(Activity.RESULT_CANCELED)
-//                    return@setOnClickListener
-//                } else {
-//                    setResult(
-//                        Activity.RESULT_OK,
-//                        Intent().putExtra(Intent.EXTRA_TEXT, tempText.text.toString())
-//                    )
-//                }
-//                finish()
-//            }
-//        }
-//
-//        binding.cancelEdit.setOnClickListener {
-//            viewModel.clearEditedData()
-//            finish()
-//        }
-//
-//    }
 }

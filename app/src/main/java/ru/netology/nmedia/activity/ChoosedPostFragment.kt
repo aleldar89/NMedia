@@ -8,18 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.google.gson.Gson
 import ru.netology.nmedia.R
-import ru.netology.nmedia.activity.NewPostFragment.Companion.textArg
-import ru.netology.nmedia.databinding.CardPostBinding
 import ru.netology.nmedia.databinding.FragmentCardPostBinding
-import ru.netology.nmedia.databinding.FragmentNewPostBinding
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.util.StringArg
 import ru.netology.nmedia.viewmodel.OnInteractionListener
 import ru.netology.nmedia.viewmodel.PostViewHolder
 import ru.netology.nmedia.viewmodel.PostViewModel
-import ru.netology.nmedia.viewmodel.PostsAdapter
 
 class ChoosedPostFragment : Fragment() {
 
@@ -43,9 +40,9 @@ class ChoosedPostFragment : Fragment() {
         )
 
         val gson = Gson()
-        val post = arguments?.textArg.let { gson.fromJson(it, Post::class.java) }
+        val post: Post = arguments?.textArg.let { gson.fromJson(it, Post::class.java) }
 
-        val adapter = PostsAdapter(
+        val postViewHolder = PostViewHolder(binding,
             object : OnInteractionListener {
                 override fun onLike(post: Post) {
                     viewModel.likeById(post.id)
@@ -56,17 +53,23 @@ class ChoosedPostFragment : Fragment() {
                         putExtra(Intent.EXTRA_TEXT, post.content)
                         type = "text/plain"
                     }
-
                     val chooserIntent = Intent.createChooser(intent, null)
                     startActivity(chooserIntent)
                 }
 
                 override fun onEdit(post: Post) {
+                    findNavController().navigate(
+                        R.id.action_choosedPostFragment_to_newPostFragment,
+                        Bundle().apply {
+                            textArg = post.content
+                        }
+                    )
                     viewModel.edit(post)
                 }
 
                 override fun onRemove(post: Post) {
                     viewModel.removeById(post.id)
+                    findNavController().navigateUp()
                 }
 
                 override fun onPlay(post: Post) {
@@ -74,15 +77,10 @@ class ChoosedPostFragment : Fragment() {
                     startActivity(intent)
                 }
             }
+
         )
-
-//        binding.list.adapter = adapter
-
-//        viewModel.data.observe(viewLifecycleOwner) { posts ->
-//            adapter.submitList(posts)
-//        }
+        postViewHolder.bind(post)
 
         return binding.root
     }
-
 }
