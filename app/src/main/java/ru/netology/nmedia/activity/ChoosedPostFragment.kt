@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.gson.Gson
 import ru.netology.nmedia.R
+import ru.netology.nmedia.activity.NewPostFragment.Companion.textArg2
 import ru.netology.nmedia.databinding.FragmentCardPostBinding
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.util.StringArg
@@ -80,6 +81,12 @@ class ChoosedPostFragment : Fragment() {
 
         )
         postViewHolder.bind(post)
+
+        val contentUpdate = arguments?.textArg2
+        if (contentUpdate != null)
+            binding.apply {
+                content.text = contentUpdate
+            }
 
         return binding.root
     }

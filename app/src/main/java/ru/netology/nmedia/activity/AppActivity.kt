@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import ru.netology.nmedia.R
 import ru.netology.nmedia.activity.NewPostFragment.Companion.textArg
+import ru.netology.nmedia.activity.NewPostFragment.Companion.textArg2
 
 class AppActivity : AppCompatActivity(R.layout.activity_app) {
 
@@ -22,6 +23,7 @@ class AppActivity : AppCompatActivity(R.layout.activity_app) {
                 return@let
             }
             intent.removeExtra(Intent.EXTRA_TEXT)
+
             findNavController(R.id.nav_host_fragment).navigate(
                 R.id.action_feedFragment_to_newPostFragment,
                 Bundle().apply {
@@ -38,8 +40,15 @@ class AppActivity : AppCompatActivity(R.layout.activity_app) {
                 R.id.action_choosedPostFragment_to_newPostFragment,
                 Bundle().apply {
                     textArg = text
+                    textArg2 = text
                 }
             )
+//            findNavController(R.id.nav_host_fragment).navigate(
+//                R.id.action_newPostFragment_to_choosedPostFragment,
+//                Bundle().apply {
+//                    textArg2 = text
+//                }
+//            )
         }
     }
 }
