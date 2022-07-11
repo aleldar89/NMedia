@@ -12,7 +12,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.gson.Gson
 import ru.netology.nmedia.R
-import ru.netology.nmedia.activity.NewPostFragment.Companion.textArg2
 import ru.netology.nmedia.databinding.FragmentFeedBinding
 import ru.netology.nmedia.viewmodel.*
 import ru.netology.nmedia.dto.Post
@@ -43,6 +42,7 @@ class FeedFragment : Fragment() {
 
         val adapter = PostsAdapter(
             object : OnInteractionListener {
+
                 override fun onLike(post: Post) {
                     viewModel.likeById(post.id)
                 }
@@ -80,7 +80,6 @@ class FeedFragment : Fragment() {
                         R.id.action_feedFragment_to_choosedPostFragment,
                         Bundle().apply {
                             textArg = gson.toJson(post)
-                            textArg2 = post.content
                         }
                     )
                 }

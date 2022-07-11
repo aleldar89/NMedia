@@ -16,7 +16,6 @@ class NewPostFragment : Fragment() {
 
     companion object {
         var Bundle.textArg: String? by StringArg
-        var Bundle.textArg2: String? by StringArg
     }
 
     private val viewModel: PostViewModel by viewModels(
@@ -40,11 +39,6 @@ class NewPostFragment : Fragment() {
         binding.edit.requestFocus()
 
         binding.ok.setOnClickListener {
-
-            Bundle().apply {
-                textArg2 = binding.edit.text.toString()
-            }
-
             viewModel.changeContent(binding.edit.text.toString())
             viewModel.save()
             AndroidUtils.hideKeyboard(requireView())
