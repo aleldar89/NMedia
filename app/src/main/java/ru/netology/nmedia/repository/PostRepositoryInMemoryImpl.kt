@@ -14,10 +14,10 @@ class PostRepositoryInMemoryImpl: PostRepository  {
             content = "Пост с вложенным видео",
             published = "20 мая в 18:36",
             likedByMe = false,
-            liked = 0,
+            likes = 0,
             sharedByMe = false,
-            shared = 0,
-            viewed = 1,
+            shares = 0,
+            views = 1,
             video = "https://www.youtube.com/watch?v=WhWc3b3KhnY"
         ),
         Post(
@@ -26,10 +26,10 @@ class PostRepositoryInMemoryImpl: PostRepository  {
             content = "Привет, это старая Нетология! Когда-то Нетология начиналась с интенсивов по онлайн-маркетингу. Затем появились курсы по дизайну, разработке, аналитике и управлению. Мы растём сами и помогаем расти студентам: от новичков до уверенных профессионалов. Но самое важное остаётся с нами: мы верим, что в каждом уже есть сила, которая заставляет хотеть больше, целиться выше, бежать быстрее. Наша миссия — помочь встать на путь роста и начать цепочку перемен → http://netolo.gy/fyb",
             published = "20 мая в 18:36",
             likedByMe = false,
-            liked = 0,
+            likes = 0,
             sharedByMe = false,
-            shared = 0,
-            viewed = 1
+            shares = 0,
+            views = 1
         ),
         Post(
             id = nextId++,
@@ -37,10 +37,10 @@ class PostRepositoryInMemoryImpl: PostRepository  {
             content = "Привет, это новая Нетология! Когда-то Нетология начиналась с интенсивов по онлайн-маркетингу. Затем появились курсы по дизайну, разработке, аналитике и управлению. Мы растём сами и помогаем расти студентам: от новичков до уверенных профессионалов. Но самое важное остаётся с нами: мы верим, что в каждом уже есть сила, которая заставляет хотеть больше, целиться выше, бежать быстрее. Наша миссия — помочь встать на путь роста и начать цепочку перемен → http://netolo.gy/fyb",
             published = "21 мая в 18:36",
             likedByMe = false,
-            liked = 0,
+            likes = 0,
             sharedByMe = false,
-            shared = 0,
-            viewed = 1
+            shares = 0,
+            views = 1
         )
     )
 
@@ -53,7 +53,7 @@ class PostRepositoryInMemoryImpl: PostRepository  {
             if (it.id == id) {
                 it.copy(
                     likedByMe = !it.likedByMe,
-                    liked = if (!it.likedByMe) it.liked + 1 else it.liked - 1
+                    likes = if (!it.likedByMe) it.likes + 1 else it.likes - 1
                 )
             } else it
         }
@@ -65,7 +65,7 @@ class PostRepositoryInMemoryImpl: PostRepository  {
             if (it.id == id) {
                 it.copy(
                     sharedByMe = !it.sharedByMe,
-                    shared = if (!it.sharedByMe) it.shared + 1 else it.shared - 1
+                    shares = if (!it.sharedByMe) it.shares + 1 else it.shares - 1
                 )
             } else it
         }
@@ -86,10 +86,10 @@ class PostRepositoryInMemoryImpl: PostRepository  {
                     content = post.content,
                     published = "Now",
                     likedByMe = false,
-                    liked = 0,
+                    likes = 0,
                     sharedByMe = false,
-                    shared = 0,
-                    viewed = 1
+                    shares = 0,
+                    views = 1
                 )
             ) + posts
             data.value = posts

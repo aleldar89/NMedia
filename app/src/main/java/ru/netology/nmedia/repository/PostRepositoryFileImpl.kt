@@ -46,7 +46,7 @@ class PostRepositoryFileImpl(
              if (it.id == id) {
                 it.copy(
                     likedByMe = !it.likedByMe,
-                    liked = if (!it.likedByMe) it.liked + 1 else it.liked - 1
+                    likes = if (!it.likedByMe) it.likes + 1 else it.likes - 1
                 )
             } else it
         }
@@ -59,7 +59,7 @@ class PostRepositoryFileImpl(
             if (it.id == id) {
                 it.copy(
                     sharedByMe = !it.sharedByMe,
-                    shared = if (!it.sharedByMe) it.shared + 1 else it.shared - 1
+                    shares = if (!it.sharedByMe) it.shares + 1 else it.shares - 1
                 )
             } else it
         }
@@ -81,10 +81,10 @@ class PostRepositoryFileImpl(
                     content = post.content,
                     published = "Now",
                     likedByMe = false,
-                    liked = 0,
+                    likes = 0,
                     sharedByMe = false,
-                    shared = 0,
-                    viewed = 1
+                    shares = 0,
+                    views = 1
                 )
             ) + posts
             data.value = posts

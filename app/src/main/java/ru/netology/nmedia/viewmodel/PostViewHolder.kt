@@ -56,7 +56,6 @@ class PostViewHolder (
                 onInteractionListener.onPlay(post)
             }
 
-            //при клике на content поста запускается фрагмент c этим постом
             content.setOnClickListener {
                 onInteractionListener.onChoose(post)
             }
@@ -65,16 +64,16 @@ class PostViewHolder (
                 onInteractionListener.onLike(post)
             }
             like.isChecked = post.likedByMe
-            like.text = countToString(post.liked)
+            like.text = countToString(post.likes)
 
 
             share.setOnClickListener {
                 onInteractionListener.onShare(post)
             }
             share.isChecked = post.sharedByMe
-            share.text = countToString(post.shared)
+            share.text = countToString(post.shares)
 
-            viewed.text = countToString(post.viewed)
+            viewed.text = countToString(post.views)
 
         }
     }
