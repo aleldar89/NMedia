@@ -49,6 +49,7 @@ class ChoosedPostFragment : Fragment() {
                 }
 
                 override fun onShare(post: Post) {
+                    viewModel.shareById(post.id)
                     val intent = Intent(Intent.ACTION_SEND).apply {
                         putExtra(Intent.EXTRA_TEXT, post.content)
                         type = "text/plain"

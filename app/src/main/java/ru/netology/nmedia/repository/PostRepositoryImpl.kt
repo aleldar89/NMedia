@@ -1,6 +1,6 @@
 package ru.netology.nmedia.repository
 
-import androidx.lifecycle.map
+import androidx.lifecycle.Transformations
 import ru.netology.nmedia.convert.toEntity
 import ru.netology.nmedia.convert.toModel
 import ru.netology.nmedia.dao.PostDao
@@ -10,8 +10,10 @@ class PostRepositoryImpl(
     private val postDao: PostDao
 ) : PostRepository  {
 
-    override val data = postDao.getAll().map { entities ->
-        entities.map { it.toModel() }
+    override fun getAll() = Transformations.map(postDao.getAll()) { list ->
+        list.map {
+            it.toModel()
+        }
     }
 
     override fun save(post: Post) {
