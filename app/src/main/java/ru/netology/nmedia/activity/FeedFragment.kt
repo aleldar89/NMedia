@@ -1,6 +1,5 @@
 package ru.netology.nmedia.activity
 
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -13,9 +12,11 @@ import androidx.navigation.fragment.findNavController
 import com.google.gson.Gson
 import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.FragmentFeedBinding
-import ru.netology.nmedia.viewmodel.*
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.util.StringArg
+import ru.netology.nmedia.viewmodel.OnInteractionListener
+import ru.netology.nmedia.viewmodel.PostViewModel
+import ru.netology.nmedia.viewmodel.PostsAdapter
 
 class FeedFragment : Fragment() {
 
