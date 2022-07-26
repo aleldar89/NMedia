@@ -7,4 +7,8 @@
     <string name="edit">Edit</string>
     <string name="edited_message">Edit Message</string>
     <string name="blank_message_error">Text is blank</string>
+    <string name="notification_user_liked">User %1$s liked %2$s\'s post</string>
+    <string name="notification_user_posted">User %1$s create new post:</string>
+    <string name="channel_remote_name">Server notifications</string>
+    <string name="channel_remote_description">Notifications from remote server</string>
 </resources>

@@ -8,4 +8,8 @@
     <string name="edit">Редактировать</string>
     <string name="edited_message">Редактирование</string>
     <string name="blank_message_error">Добавьте текст</string>
+    <string name="notification_user_liked">Пользователь %1$s лайкнул %2$s пост</string>
+    <string name="channel_remote_name">Уведомления сервера</string>
+    <string name="channel_remote_description">Уведомления удаленного сервера</string>
+    <string name="notification_user_posted">Пользователь %1$s опубликовал новый пост:</string>
 </resources>
