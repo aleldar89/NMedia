@@ -12,4 +12,8 @@
     <string name="channel_remote_name">Уведомления сервера</string>
     <string name="channel_remote_description">Уведомления удаленного сервера</string>
     <string name="notification_user_posted">Пользователь %1$s опубликовал новый пост:</string>
+    <string name="empty_posts">Посты отсутствуют</string>
+    <string name="retry_loading">Попробовать снова</string>
+    <string name="error_loading">Что-то пошло не так. Попробуйте снова позже</string>
+    <string name="chooser_share_post">Поделитесь постом</string>
 </resources>

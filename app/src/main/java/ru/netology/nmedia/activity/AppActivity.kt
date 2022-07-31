@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import com.google.firebase.messaging.FirebaseMessaging
 import ru.netology.nmedia.R
 import ru.netology.nmedia.activity.NewPostFragment.Companion.textArg
 
@@ -22,18 +21,16 @@ class AppActivity : AppCompatActivity(R.layout.activity_app) {
             if (text?.isNotBlank() != true) {
                 return@let
             }
+
             intent.removeExtra(Intent.EXTRA_TEXT)
 
-            findNavController(R.id.nav_host_fragment).navigate(
-                R.id.action_feedFragment_to_newPostFragment,
-                Bundle().apply {
-                    textArg = text
-                }
-            )
-        }
-
-        FirebaseMessaging.getInstance().token.addOnSuccessListener {
-            println(it)
+            findNavController(R.id.nav_host_fragment)
+                .navigate(
+                    R.id.action_feedFragment_to_newPostFragment,
+                    Bundle().apply {
+                        textArg = text
+                    }
+                )
         }
     }
 }
